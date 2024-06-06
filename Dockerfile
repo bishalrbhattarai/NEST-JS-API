@@ -1,7 +1,7 @@
 # creata an docker file for nestjs app image creation 
 
 # Use the latest Node.js  image
-FROM node:latest
+FROM node
 
 # Create a directory for the app
 WORKDIR /usr/src/app
