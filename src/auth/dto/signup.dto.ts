@@ -9,8 +9,5 @@ export class SignUpDto {
     @IsString({
         message: 'Password must be a string'
     })
-    @Min(4, {
-        message: 'Password must be at least 4 characters long'
-    })
     password: string;
 }
