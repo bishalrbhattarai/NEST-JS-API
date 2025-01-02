@@ -29,9 +29,9 @@ export class AuthService {
 
     }
 
-    signIn(signInDTO: SigninDTO) {
+    async signIn(signInDTO: SigninDTO) {
         const { email, password } = signInDTO;
-        const foundUser = this.primsa.user.findUnique({
+        const foundUser = await this.primsa.user.findUnique({
             where: {
                 email
             }
@@ -40,6 +40,13 @@ export class AuthService {
         if (!foundUser) {
             throw new UnauthorizedException('Invalid credentials')
         }
+
+        const isPasswordValid = await argon2.verify(foundUser.password, password);
+
+        if (!isPasswordValid) {
+            throw new UnauthorizedException('Invalid credentials')
+        }
+
 
 
 
