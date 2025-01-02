@@ -9,4 +9,4 @@ export class SigninDTO {
     @IsNotEmpty()
     @IsString()
     password: string;
-}
+} 

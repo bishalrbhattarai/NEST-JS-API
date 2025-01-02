@@ -5,9 +5,6 @@ import { SigninDTO } from './dto/signin.dto';
 import * as argon2 from 'argon2';
 import { Prisma } from '@prisma/client';
 
-
-
-
 @Injectable()
 export class AuthService {
 
@@ -48,8 +45,8 @@ export class AuthService {
         }
 
 
-
-
+        delete foundUser.password;
+        return foundUser;
 
     }
 }
