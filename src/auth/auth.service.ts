@@ -20,7 +20,6 @@ export class AuthService {
         const createdUser = await this.primsa.user.create({
             data: { ...signUpDTO, password: hashedPassword }
         });
-        delete createdUser.password;
         return createdUser
     }
 
