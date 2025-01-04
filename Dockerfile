@@ -1,20 +1,25 @@
-FROM node
+# creata an docker file for nestjs app image creation 
 
-# Create app directory
+# Use the latest Node.js  image
+FROM node:latest
+
+# Create a directory for the app
 WORKDIR /usr/src/app
 
-# Install app dependencies
+# Copy package.json and package-lock.json to the app directory
 COPY package*.json ./
 
+# Install the app dependencies
 RUN npm install
 
-# Bundle app source
-
+# Copy the rest of the app's source code to the app directory
 COPY . .
 
-EXPOSE 3001
+# Expose the port the app runs on
+EXPOSE 3000
 
-CMD [ "npm", "run" "dev:start" ]
+# Serve the app
+CMD ["npm", "run", "start:dev"]
 
-
-
+# Build the image
+# docker build -t nestjs-app .
